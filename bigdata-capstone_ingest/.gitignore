@@ -1,0 +1,5 @@
+# Ignore raw data
+data/
+__pycache__/
+*.pyc
+.env
