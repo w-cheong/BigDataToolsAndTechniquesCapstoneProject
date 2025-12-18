@@ -19,6 +19,26 @@ MongoDB Atlas
 &emsp;&emsp;&emsp;&emsp;↓  
 Streamlit Dashboard
 
+# Query Modeling & Performance Optimization
+
+To improve query performance on large-scale datasets (7+ million records),
+we implemented query modeling using MongoDB indexes.
+
+Indexes were created on commonly queried fields to optimize filtering,
+grouping, and aggregation operations.
+
+# Indexes Created
+- accidents_clean:
+  - Compound index on (State, Severity)
+- accidents_aggregated:
+  - Compound index on (State, Severity)
+
+These indexes improve:
+- Aggregation performance
+- Streamlit dashboard filtering
+- Read/query efficiency on large collections
+
+
 
 # How the Pipeline Works
 1. Data Ingestion (Bronze Layer)
