@@ -19,14 +19,18 @@ logging.info("Connected to MongoDB Atlas")
 # access database 
 db = client["bigdata_capstone"]
 # access table
-col = db["stocks_raw"]
+col = db["accidents_raw"]
 
-df = pd.DataFrame(col.find())
-print(df)
-logging.info("dataframe table done")
+## The following used to be how we showed schema in the code. 
+## Unfortunately it takes too long with the new dataset
+# df = pd.DataFrame(col.find())
+# print(df.shape[0])
+# logging.info("dataframe table done")
 
-table_count = df.shape[0]
-print(table_count)
+# pymongo built in way to get row count from database
+row_count = col.count_documents({})
+print(f"row_count: {row_count}")
+
 logging.info("row count and schema")
 
 
