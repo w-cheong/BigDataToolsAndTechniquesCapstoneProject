@@ -38,21 +38,14 @@ logging.info(f"Using DB={DB_NAME} | Collection={COL_NAME}")
 row_count = col.count_documents({})
 print(f"row_count: {row_count}")
 
-logging.info("row count and schema")
+logging.info("row count found")
 
-
-# =========================
-#  proof we can read data without loading 7M rows
-# =========================
+# sampling documents for schema read
 print("\n--- SAMPLE DOCUMENTS (limited) ---")
 sample_docs = list(col.find({}, {"_id": 0}).limit(SAMPLE_SIZE))
 for i, doc in enumerate(sample_docs, start=1):
     print(f"\n[{i}] {doc}")
 
-
-# =========================
-#  basic schema from a small sample
-# =========================
 def _type_name(v):
     if v is None:
         return "None"
@@ -67,5 +60,7 @@ print("\n--- INFERRED SCHEMA (from sample) ---")
 for field in sorted(schema.keys()):
     types_seen = ", ".join(sorted(schema[field]))
     print(f"{field}: {types_seen}")
+
+logging.info("schema collected")
 
 print(f"\nSchema inferred from SAMPLE_SIZE={SAMPLE_SIZE}. (Not the entire collection.)")

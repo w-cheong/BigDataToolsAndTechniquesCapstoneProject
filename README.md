@@ -45,12 +45,15 @@ These indexes improve:
 * ingest_accidents.py loads the raw dataset.
 * Data is stored without modification in *accidents_raw.
 
-2. Schema Validation
+2. Data Reading and Schema Read
+* db_row_count_schema details row count and summarizes schema through sampling.
+
+3. Schema Validation (Silver Layer)
 
 * validate_accidents_schema.py checks raw data structure.
 * Validation results are saved in schema_validation_results.txt.
 
-3. Data Cleaning (Silver Layer)
+4. Data Cleaning (Silver Layer)
 
 * silver_cleaning.py handles cleaning the data:
     * Converts date/time columns
@@ -59,7 +62,7 @@ These indexes improve:
     * Cleaned data is saved into *accidents_clean.
 
 
-4. Data Aggregation (Gold Layer)
+5. Data Aggregation (Gold Layer)
 
 - aggregation.py uses MongoDB aggregation pipelines.
 - Data is grouped by State and Severity.
@@ -69,17 +72,19 @@ These indexes improve:
     - Average temperature
 - Results are saved to *accidents_aggregated.
 
-5. Data Visualization
+6. Data Visualization 
 - streamlit_app.py reads from the aggregated collection only.
 - Provides interactive charts and filters for analysis.
 
 # Execution Order (Run each scripts in the following order)
 1. ingest_accidents.py  -> python ingest_accidents.py
 
-2. validate_accidents_schema.py -> python validate_accidents_schema.py
+2. db_row_count_schema -> python db_row_count_schema.py
 
-3. silver_cleaning.py -> python silver_cleaning.py
+3. validate_accidents_schema.py -> python validate_accidents_schema.py
 
-4. aggregation.py -> python aggregation.py
+4. silver_cleaning.py -> python silver_cleaning.py
 
-5. streamlit_app.py -> streamlit run streamlit_app.py
+5. aggregation.py -> python aggregation.py
+
+6. streamlit_app.py -> python -m streamlit run streamlit_app.py 

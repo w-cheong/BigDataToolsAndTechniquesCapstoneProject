@@ -48,7 +48,7 @@ def main():
         Severity: int = Field(ge=1, le=4)
 
         Start_Time: datetime
-        End_Time: Optional[datetime] = None
+        End_Time: datetime
         Weather_Timestamp: Optional[datetime] = None
 
         Start_Lat: float = Field(ge=-90, le=90)
@@ -56,13 +56,13 @@ def main():
         End_Lat: Optional[float] = Field(default=None, ge=-90, le=90)
         End_Lng: Optional[float] = Field(default=None, ge=-180, le=180)
 
-        Distance_mi: Optional[float] = Field(default=None, alias="Distance(mi)")
+        Distance_mi: float = Field(default=None, alias="Distance(mi)")
 
         City: Optional[str] = None
         County: Optional[str] = None
-        State: Optional[str] = Field(default=None, min_length=2, max_length=2)
+        State: str = Field(default=None, min_length=2, max_length=2)
         Zipcode: Optional[str] = None
-        Country: Optional[str] = None
+        Country: str = None
         Timezone: Optional[str] = None
 
         Weather_Condition: Optional[str] = None
