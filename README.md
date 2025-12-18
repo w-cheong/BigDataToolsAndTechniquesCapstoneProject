@@ -4,8 +4,13 @@ This is the capstone project for the Big Data Tools and Techniques course. We ar
 
 # Dependencies
 - pymongo
+- pandas
 - streamlit
 - plotly
+- pytest
+- mypy
+- python-dotenv
+- pandas-stubs (for mypy type checking with pandas)
 
 # Architecture of Capstone
 US Accidents Dataset  
@@ -26,6 +31,14 @@ we implemented query modeling using MongoDB indexes.
 
 Indexes were created on commonly queried fields to optimize filtering,
 grouping, and aggregation operations.
+
+# Testing (PyTest)
+
+We include 3 automated tests in the `tests/` folder to satisfy the PyTest requirement.
+
+# Run tests
+bash
+pytest -q
 
 # Indexes Created
 - accidents_clean:
