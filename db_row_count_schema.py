@@ -1,6 +1,6 @@
 import os
 from pymongo import MongoClient
-import pandas as pd
+# import pandas as pd
 import logging
 from dotenv import load_dotenv
 
